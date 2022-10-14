@@ -1,0 +1,2 @@
+# ThursdayActivity13thOctOct2022
+ThursdayActivity13thOctOct2022.git
