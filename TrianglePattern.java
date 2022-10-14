@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Triangle 
+public class TrianglePattern 
 {
  public static void main(String[] args)
 			{
