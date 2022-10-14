@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class MonthName
+public class DisplayMonth
 {
     public static void main(String[] args)
     {
