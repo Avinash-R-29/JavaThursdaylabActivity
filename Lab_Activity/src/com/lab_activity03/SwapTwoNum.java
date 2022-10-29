@@ -4,7 +4,7 @@ import java.util.*;
 class Swap
 {
 	int a,b;
-	
+
 	void swap(Swap sw)
 	{
 		int tmp=sw.a;

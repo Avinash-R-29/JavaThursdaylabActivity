@@ -20,26 +20,26 @@ import java.util.*;
 			age=sc.nextInt();
 			System.out.println("Enter Student's Weight:");
 			weight=sc.nextFloat();
-			
+
 		}
 		void displayInfo()
 		{
 			System.out.println("Name:"+name);
 			System.out.println("Age:"+age);
 			System.out.println("Weight:"+weight);
-			
+
 		}
 		static int getCount()
 		{
 			return Student.count;
 		}
-		
+
 	}
 	public class StudentInfo {
 
 		public static void main(String[] args) 
 		{
-		
+
 			Student st1=new Student();
 			Student st2=new Student();
 			System.out.println("Student 1");
@@ -51,8 +51,8 @@ import java.util.*;
 			st1.displayInfo();
 			st2.displayInfo();
 			System.out.println("Number of Student Enrolled:"+Student.getCount());
-			
-		
+
+
 
 		}
 
