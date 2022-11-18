@@ -3,29 +3,30 @@ import java.util.Scanner;
 
 class Range
 {
-	void Square()throws OutOfRangeException
+	void Square(int a)throws OutOfRangeException
 	{
-		int num;
+		//int num;
 		Scanner sc=new Scanner(System.in);
-		num=sc.nextInt();
-		if(num < 10 && num > 50)
-		{
+		int num1=sc.nextInt();
+		
+		if(num1 > 10 && num1 < 50)
+		
 			throw new OutOfRangeException("Out Of range");
 			//System.out.println("Out of range");
-		}
+		
 		else
-		{
-			System.out.println("Square range is: "+num*num);
-		}
+			
+			throw new OutOfRangeException("Square range is: "+num1*num1);
+		
 	}
 		public static void main(String []args) throws OutOfRangeException
 		{
 			Range e=new Range();
 			try
 			{
-				e.Square();
+				e.Square(1);
 			}
-			catch(OutOfRangeException e1)
+			catch(Exception e1)
 			{
 			System.out.println(e1);
 			}
