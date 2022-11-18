@@ -11,9 +11,9 @@ class MyException extends Exception
 class Product
 {
 	//int weight;
-	static void productCheck(int i)
+	static void productCheck(int i) throws MyException
 	{
-		int weigth;
+		int weigth = 0;
 		if(weigth < 100)
 			{
 				throw new MyException ("not valid");
@@ -22,17 +22,9 @@ class Product
 				System.out.println("product valid");
 			}	
 		}
-		public static void main(String args[])
+		public static void main(String args[]) throws MyException
 		{
-		try	{
-				productCheck(100);
-			}
-		catch(MyException  e)
-			{
-				System.out.println("Cought the exception");
-				System.out.println("Exception occur"+e);
-			}
+		productCheck(100);
 
 		}
 	}
-}
