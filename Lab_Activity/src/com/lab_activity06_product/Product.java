@@ -31,7 +31,7 @@ class Product
 			}
 			catch(MyException e)
 			{
-				System.out.println("cought My Exception");
+				System.out.println("Cought My Exception");
 				System.out.println(e.getMessage());
 			}
 		}
