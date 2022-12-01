@@ -24,7 +24,8 @@ class IDFC
 	
 		String value= LChars + CChars + symbols + numbers ;
 		Random rdm_method = new Random();
-	
+	try
+	{
 		char[] Code = new char[length];
 		
 		
@@ -32,8 +33,6 @@ class IDFC
 		{
 			Code[i]=value.charAt(rdm_method.nextInt(value.length()));
 		}
-		try
-		{
 			if(CardNum < 10)
 				//System.out.println(Generate_Code(8));
 				System.out.println("card Number should be 10:");
@@ -46,7 +45,7 @@ class IDFC
 		}
 		catch (InputMismatchException e)
 		{
-			System.out.println("card Number should be 14"+e);
+			System.out.println("card Number should be 10"+e);
 		}
 		
 			return null;
