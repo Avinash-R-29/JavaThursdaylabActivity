@@ -1,15 +1,16 @@
 package com.lab_activity09;
 
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.TreeMap;
-
-/*import java.util.*;    
-class Student
+import java.util.*; 
+/*
+class Studen
 {    
 	int id;    
 	String name,course;    
 	    
-		public Student(int id, String name,String course) 
+		public Studen(int id, String name,String course) 
 		{    
 		    this.id = id;    
 		    this.name = name;
@@ -17,24 +18,24 @@ class Student
 		}    
 }
  
-public class Main{
+public class Student{
 public static void main(String args[])
 {
-	Map<Integer,Student> std=new TreeMap<Integer,Student>();
-	Student s1=new Student(101,"avinash","BCA");
-	Student s2=new Student(102,"Jagadeesha","BCA");
-	Student s3=new Student(103,"Manju","BSc");
-	Student s4=new Student(104,"balu","B.tech");
+	Map<Integer,Studen> std=new TreeMap<Integer,Studen>();
+	Studen s1=new Studen(101,"avinash","BCA");
+	Studen s2=new Studen(102,"Jagadeesha","BCA");
+	Studen s3=new Studen(103,"Manju","BSc");
+	Studen s4=new Studen(104,"balu","B.tech");
 	
 	std.put(1,s1);
 	std.put(2,s2);
 	std.put(3,s3);
 	std.put(4,s4);
 	
-	for(Map.Entry<Integer,Student>entry:std.entrySet())
+	for(Entry<Integer, Studen> entry:std.entrySet())
 {
 	int key=entry.getKey();
-	Student s=entry.getValue();
+	Studen s=entry.getValue();
 	System.out.println(key+"Details");
 	System.out.println(s.id+" "+s.name+" "+s.course);
 }
@@ -62,31 +63,36 @@ if(std.containsValue("Avinash"))
     }
 
 //Display First value
-System.out.println(std.firstEntry());
-System.out.println(std.lastEntry());
+System.out.println(((TreeMap<Integer, Studen>) std).firstEntry());
+System.out.println(((TreeMap<Integer, Studen>) std).lastEntry());
 }
-}*/
+}
+*/
+///*
 
 public class Student{
  public static void main(String args[]){
 	Map<Integer,String> std01 = new TreeMap<Integer,String>();
 	std01.put(1001,"BCA");
 	std01.put(1002,"BSc");
-	
-	System.out.println(std01);
+	for(Map.Entry m:std01.entrySet())
+	{
+	System.out.println(m.getKey()+" "+m.getValue());
+	}
 	
 	Map<Integer,String> std02 = new TreeMap<Integer,String>();
 	std02.put(1003,"M.tech");
 	std02.put(1004,"B.tech");
-	
-	System.out.println(std02);
-	
+	for(Map.Entry m1:std02.entrySet())
+	{
+		System.out.println(m1.getKey()+" "+m1.getValue());
+	}
 	//Add the one set to another
 	std01.putAll(std02);
 		System.out.println("After the copied elements: "+std01);
 
 	//Check the value and key elements contains Or not
-if(std01.containsKey(1003))
+		if(std01.containsKey(1003))
 	{
 		System.out.println("The given key is contains");
 	}
@@ -95,7 +101,7 @@ if(std01.containsKey(1003))
 		System.out.println("The given key is not contains");
 	}
 
-if (std01.containsValue("B.tech"))
+	if (std01.containsValue("B.tech"))
 	{
 		System.out.println("The given key is contains");
 	}
@@ -103,9 +109,15 @@ if (std01.containsValue("B.tech"))
 	{
 		System.out.println("The given key is not contains");
 	}
-//Find the Highest value and Lowest value
-//System.out.printlb("the First value is: "+std01.firstKey());
-//System.out.printlb("the First value is: "+std01.lastKey());
-}
-}
+		//using replace() and removed specific given key
+		System.out.println("the value is removed: "+std01.remove(1002));
+		System.out.println("the value is replaced: "+std01.replace(1001,"Bcom"));
 
+		//Find the Highest value and Lowest value
+		System.out.println(std01);
+		System.out.println("the First value is: "+((TreeMap<Integer, String>) std01).pollFirstEntry());
+		System.out.println("the Last value is: "+((TreeMap<Integer, String>) std01).pollLastEntry());
+		
+ }
+}
+//*/

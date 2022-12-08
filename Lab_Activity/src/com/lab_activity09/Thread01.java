@@ -31,7 +31,9 @@ class OddThread extends Thread
 public class Thread01{
 	public static void main(String args[]){
 	EvenThread  evn=new EvenThread ();
+	evn.run();
 	OddThread odd= new OddThread(); 
+	odd.run();
 	}
 }
 	

@@ -13,16 +13,16 @@ public class TreeSet01 {
 		         System.out.println("Initial Color : "+color );  
 		           
 		         System.out.println("Reverse color : "+color .descendingSet());//Reverse Order    
-		         System.out.println("Head color : "+color .headSet("Red",true));  
+		         System.out.println("Head color : "+color .headSet("Red"));  
+		         System.out.println("First color:" + color.pollLast());
 		         System.out.println("Last color: " + color.pollFirst());
-			 System.out.println("First color:" + color.pollLast());
 			 
 			TreeSet<String> color02 = new TreeSet<String>();
 			color02 .add("White01");  
 		      	color02 .add("Pink01");  
-		        //color02 .add("Red01");  
-		        //color02 .add("Blue01");  
-		        //color02 .add("Gree01");
+		        color02 .add("Red01");  
+		        color02 .add("Blue01");  
+		        color02 .add("Gree01");
 			color.addAll(color02);
 		System.out.println(color);  
 		System.out.println(color02);  
