@@ -1,9 +1,11 @@
-package Lab_Activity10Dec.Lab_Activity10;
+package com.Lab_Activity10Dec.Lab_Activity10;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import com.Lab_Activity10Dec.Lab_Activity10.FibonacciSample;
 
 class FibonacciSampleTest {
 	static FibonacciSample fibonacci;

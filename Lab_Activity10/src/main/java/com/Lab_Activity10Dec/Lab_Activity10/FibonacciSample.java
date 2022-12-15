@@ -1,4 +1,4 @@
-package Lab_Activity10Dec.Lab_Activity10;
+package com.Lab_Activity10Dec.Lab_Activity10;
 
 class FibonacciSample{  
 public static void main(String args[])  
