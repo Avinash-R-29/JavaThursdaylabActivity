@@ -39,7 +39,7 @@ public class BookDetails01 {
 			b_price=sc.nextInt();
 			String query1="insert into Book value('"+b_id+"','"+b_name+"','"+b_author+"','"+b_price+"')";
 			st.executeUpdate(query1);
-		
+			System.out.println("Book Added sucessfully");
 			
 			}
 			catch(Exception e) {
@@ -75,7 +75,7 @@ public class BookDetails01 {
 			System.out.println("enter the book Author");
 			change=sc.next();
 
-			String query3="update Book set Book_Author="+change+" where Book_id="+b_id02+" ";
+			String query3="update Book set Book_Author='"+change+"' where Book_id='"+b_id02+"' ";
 			ResultSet re3=st.executeQuery(query3);
 			
 			System.out.println("Updated sucessfully");
@@ -90,13 +90,21 @@ public class BookDetails01 {
 		{
 			try
 			{
-				
+				String query4="Select * from Book order by Book_price desc";
+				ResultSet re4=st.executeQuery(query4);
+				while(re4.next())
+				{
+				String BookData=re4.getInt(1)+ " "+re4.getString(2)+" " +re4.getString(3)+" "+re4.getInt(4);
+				System.out.println(BookData);
+				}
 			}
 			catch(Exception e)
 			{
 				System.out.println(e);
 			}
 		}
+		break;
+		
 		case 5:
 			System.out.println("Enter the Book id to Delete in Table");
 			try {
