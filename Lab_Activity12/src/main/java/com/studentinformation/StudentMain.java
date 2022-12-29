@@ -37,6 +37,8 @@ public class StudentMain {
 		
 		session.getTransaction().commit();
 
+		System.out.println("1.View All Student Details || 2.update student name");
+		System.out.println("3.Delete student details   || 4.view Specific student details");
 		
 		int option;
 			Scanner sc=new Scanner(System.in);
@@ -72,11 +74,11 @@ public class StudentMain {
 			case 3:
 				try
 				{
-					int rollnum;
+					int stdnum;
 					System.out.println("Enter the roll num");
-					rollnum=sc.nextInt();
+					stdnum=sc.nextInt();
 					session.beginTransaction();
-					Query query03=session.createQuery("delete from Student22Batch where id="+rollnum );
+					Query query03=session.createQuery("delete from Student22Batch where id="+stdnum );
 					int list03=query03.executeUpdate();
 					session.getTransaction().commit();
 
@@ -89,7 +91,15 @@ public class StudentMain {
 			case 4:
 				try
 				{
-		
+					int stdid;
+					System.out.println("Enter the roll num");
+					stdid=sc.nextInt();
+					session.beginTransaction();
+					Query query04=session.createQuery(" from Student22Batch where id="+stdid);
+					List list=query04.list();
+					System.out.println(list);
+					session.getTransaction().commit();
+					
 				}
 				catch(Exception e)
 				{
