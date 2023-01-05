@@ -17,7 +17,7 @@
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
     <property name="hbm2ddl.auto">create</property>
-     <mapping class="com.lab_activity13.Books" />
-     <mapping class="com.lab_activity13.Library" />
+     <mapping class="com.lab_activity13.bookentity.Books" />
+     <mapping class="com.lab_activity13.libraryentity.Library" />
   </session-factory>
 </hibernate-configuration>

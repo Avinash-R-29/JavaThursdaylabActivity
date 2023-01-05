@@ -6,6 +6,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.lab_activity13.bookentity.Books;
+import com.lab_activity13.libraryentity.Library;
+
 public class MappLibtraryBook {
 
 	public static void main(String[] args) 
