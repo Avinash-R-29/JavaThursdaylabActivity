@@ -13,30 +13,30 @@ import com.springboot.pmgnt.entity.Product;
 import com.springboot.pmgnt.serviceImp.ProductServiceImp;
 
 @RestController
-public class ProductController 
+public class ProductController
 {
 	@Autowired
 	ProductServiceImp productSerImp;
-	
+
 	@PostMapping("/product")
 	String saveProduct(@RequestBody Product product)
 	{
 		productSerImp.save(product);
 		return (product.getProductId()+""+product.getProductName()+""+product.getProductPrice()+""+product.getMnfDate()+""+product.getExpDate());
-		
+
 	}
-	
-	
+
+
 	@DeleteMapping("/delete/{productId}")
 	void deleteProduct(@PathVariable("productId") int pid)
 	{
 		productSerImp.deleteProduct(pid);
-		
+
 	}
 
-	
+
 	@GetMapping("/product/{productId}")
-	Product getProductDetails(@PathVariable("productId") int productId) 
+	Product getProductDetails(@PathVariable("productId") int productId)
 	{
 		return productSerImp.getProductById(productId);
 	}

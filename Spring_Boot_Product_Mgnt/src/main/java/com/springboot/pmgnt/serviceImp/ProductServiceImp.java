@@ -14,8 +14,8 @@ public class ProductServiceImp implements ProductService
 
 	@Autowired
 	ProductRepository productrepo;
-	
-	
+
+
 	//Add the product
 	@Override
 	public Product save(Product p)
@@ -30,7 +30,7 @@ public class ProductServiceImp implements ProductService
 		productrepo.deleteById(pid);
 	}
 
-	
+
 	//Update the product
 	@Override
 	public void update(Product params, int productId)
@@ -40,11 +40,11 @@ public class ProductServiceImp implements ProductService
 		p.setProductPrice(params.getProductPrice());
 		p.setMnfDate(params.getMnfDate());
 		p.setExpDate(params.getExpDate());
-		
+
 		productrepo.save(p);
-		
+
 	}
-	
+
 	//Get all product Details
 	@Override
 	public Product getProductById(int productId) {
