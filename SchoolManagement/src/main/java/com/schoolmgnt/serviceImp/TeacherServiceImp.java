@@ -1,5 +1,9 @@
 package com.schoolmgnt.serviceImp;
 
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,32 +20,25 @@ public class TeacherServiceImp implements TeacherService
 {
 	@Autowired
 	TeacherReporsitory teacherRepo;
-	//@Autowired
-	//StudentRepository studentRepo;
+	
 	public Teacher teachId;
 	
 	
-									//Inserting the Student Details in Student Table.
+									//  1.Inserting the Student Details in Student Table.
 	@Override
-	public Teacher insertData(TeacherDTO teacherDTO) 
+	public Teacher insertDataRecord(@Valid TeacherDTO teacherDTO) 
 	{
-		Teacher teacher=Teacher.builder().teacherName(teacherDTO.getTeacherName())
-										 .subject(teacherDTO.getSubject())
-										 .phoneNumber(teacherDTO.getPhoneNumber())							 
-										 .techEmail(teacherDTO.getTechEmail())
-										 .address(teacherDTO.getAddress())
-										 .student(teacherDTO.getStudent())
-										 .build();
-		
-//		Integer studentId = stud.getStudentId();
-//		Student student=studentRepo.findById(studentId).get();
-//						teacher.setStudent(student);
-		 			
-		return  teacherRepo.save(teacher);
+		Teacher teacher = Teacher.builder()	.teacherName(teacherDTO.getTeacherName())
+											.subject(teacherDTO.getSubject())
+											.phoneNumber(teacherDTO.getPhoneNumber())							 
+				 							.techEmail(teacherDTO.getTechEmail())
+				 							.address(teacherDTO.getAddress())
+				 							.student(teacherDTO.getStudent())
+				 							.build();
+		return teacherRepo.save(teacher);
 	}
-	
 
-									//Retrieve the Student Details by given StudentID.
+									//2.Retrieve the Teacher Details by given StudentID.
 	@Override
 	public Teacher getDetailsById(int teacherId)
 	{
@@ -49,23 +46,18 @@ public class TeacherServiceImp implements TeacherService
 	}
 
 	
-									//Delete the Teacher Details By given ID
+									//3.Delete the Teacher Details By given ID
 	@Override
-	public String deleteTeacherDetails(int teacherId)
+	public Teacher deleteTeacherDetails(int teacherId)
 	{
-		//Teacher teachId = null;
-		if(teachId == teacherRepo.findById(teacherId).get())
-		{
+		
 			teacherRepo.deleteById(teacherId);
+			return teachId;
 			
-			return "Teacher Details deleted sucessfully";
-		}
-		 else
-		{
-			return "Teacher Details not deleted";
-		}
+			//return null;// "Teacher Details deleted sucessfully";
+	
 	}
-									//Update the Teacher Details by given ID.
+									//4.Update the Teacher Details by given ID.
 	@Override
 	public Teacher updateTeacherDetails(Teacher params, int teacherId) 
 	{
@@ -73,10 +65,26 @@ public class TeacherServiceImp implements TeacherService
 				teach.setTeacherName  (params.getTeacherName());
 				teach.setPhoneNumber  (params.getPhoneNumber());
 				teach.setSubject	  (params.getSubject());
-				teach.setTechEmail 		  (params.getTechEmail());
+				teach.setTechEmail 	  (params.getTechEmail());
 				teach.setAddress	  (params.getAddress());
 		
 		return teacherRepo.save(teach);
+	}
+
+									//5.Retrieve the All Teachers Details in Teacher Table.
+
+	@Override
+	public List<Teacher> getDetalisAll() 
+	{
+		return teacherRepo.findAll();
+	}
+									//6.Delete All the Teachers Details in table
+
+	@Override
+	public String deletedetailsAll()
+	{
+		teacherRepo.deleteAll();
+		return "All Teacher details are deleted";
 	}
 
 }

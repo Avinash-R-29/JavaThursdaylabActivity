@@ -34,7 +34,7 @@ public class StudentDTO
 	String studentDOB;
 	
 	@Email(message="Invalid Email Id")
-	String studentEmail;
+	String email;
 	
 	@Size(min=10,max=100,message="Full Address required")
 	String address;

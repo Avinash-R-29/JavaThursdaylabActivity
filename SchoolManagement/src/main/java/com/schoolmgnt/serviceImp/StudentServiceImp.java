@@ -1,5 +1,7 @@
 package com.schoolmgnt.serviceImp;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +22,9 @@ public class StudentServiceImp implements StudentService
 	@Override
 	public Student insertStudent(@Valid StudentDTO studentDTO) 
 	{
-		Student student=Student.builder()//.studentId(studentDTO.getStudentId())
-										 .studentName(studentDTO.getStudentName())
+		Student student=Student.builder().studentName(studentDTO.getStudentName())
 										 .studentDOB(studentDTO.getStudentDOB())
-										 .studentEmail(studentDTO.getStudentEmail())
+										 .email(studentDTO.getEmail())
 										 .address(studentDTO.getAddress())
 										 .phoneNumber(studentDTO.getPhoneNumber())
 										 .build();
@@ -41,31 +42,30 @@ public class StudentServiceImp implements StudentService
 	
 	
 	
-	/*							//Retrieve the All Student Details
+						//Retrieve the All Student Details
 	@Override
-	public Student getDetails() 
+	public List<Student> getDetailsAll() 
 	{
-		
-		return (Student) studentRepo.findAll();
+		return studentRepo.findAll();
 	}
-	*/
+	
 	
 								//Delete the Student Details By given ID
 	@Override
-	public Student  deleteId(int studentId) 
+	public String deleteId(int studentId) 
 	{
 	 studentRepo.deleteById(studentId);
-	return null;
+	return "Students details Deleted sucessfully";
 	}
 	
-	/*							//Delete the All Student Details
+								//Delete the All Student Details
 	@Override
-	public Student deleteAll( )
+	public String deleteAll()
 	{
-		
-		return null;
+		studentRepo.deleteAll();
+		return "All Student details deleted";
 	}
-	*/
+	
 	
 								//Update the Student Details by given ID.
 	@Override

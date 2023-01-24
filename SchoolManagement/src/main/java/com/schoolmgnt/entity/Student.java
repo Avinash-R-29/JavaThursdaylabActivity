@@ -23,17 +23,18 @@ public class Student
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="student_id")
 	Integer studentId;
 	
-	@Column(name="student_name")
+	@Column
 	String studentName;
 	
 	@Column(name="date_of_birth")
 	String studentDOB;
-	
+	@Column
 	String phoneNumber;
-	String studentEmail;
+	@Column
+	String email;
+	@Column
 	String address;
 	
 	

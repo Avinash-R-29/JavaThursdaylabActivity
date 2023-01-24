@@ -55,15 +55,11 @@ public class StudentController
 				return new ResponseEntity<>(studentSerImp.getDetailsById(studentId),HttpStatus.FOUND);
 			}
 		}
-		catch(NoSuchElementException e)
+		catch(StudentNotFoundException e)
 		{
-			throw new NoSuchElementException("Student details not Found ! please enter the valid input");
+			throw new StudentNotFoundException("Student data not Found ! please enter the valid input");
 		}
-//		catch(StudentNotFoundException e)
-//		{
-//			throw new StudentNotFoundException("Student data not Found ! please enter the valid input");
-//		}
-		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		
 	}
 	
@@ -72,7 +68,7 @@ public class StudentController
 	{
 		try
 		{
-			Student stud=studentSerImp.deleteId(studentId);
+			String stud=studentSerImp.deleteId(studentId);
 			if(stud != null)
 			{
 				studentSerImp.deleteId(studentId);
@@ -80,7 +76,7 @@ public class StudentController
 		}
 		catch(Exception e)
 		{
-			//throw new UserNotFoundException("Student data not Deleted ! please enter the valid input");
+			throw new StudentNotFoundException("Student data not Deleted ! please enter the valid input");
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
@@ -101,7 +97,7 @@ public class StudentController
 			throw new StudentNotFoundException("Student data not Modified ! please enter the valid input");
 
 		}
-		return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 }
 

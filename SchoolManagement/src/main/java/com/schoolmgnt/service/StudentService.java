@@ -1,5 +1,7 @@
 package com.schoolmgnt.service;
 
+import java.util.List;
+
 import com.schoolmgnt.dto.StudentDTO;
 import com.schoolmgnt.entity.Student;
 
@@ -9,12 +11,13 @@ public interface StudentService
 	
 	Student getDetailsById(int studentId);
 	
-	//Student getDetails( );
+	List<Student> getDetailsAll();
 	
-	 Student deleteId(int studentId);
+	String deleteId(int studentId);
 	
-	//Student deleteAll( );
+	String deleteAll();
 	
 	Student updateDetails(Student student,int studentId);
+
 	
 }

@@ -1,6 +1,6 @@
 package com.schoolmgnt.controller;
 
-import java.util.NoSuchElementException;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.schoolmgnt.dto.TeacherDTO;
 import com.schoolmgnt.entity.Teacher;
-import com.schoolmgnt.exception.StudentNotFoundException;
 import com.schoolmgnt.exception.TeacherNotFoundException;
 import com.schoolmgnt.serviceImp.TeacherServiceImp;
 
@@ -26,21 +25,22 @@ public class TeacherController
 {
 	@Autowired
 	TeacherServiceImp teacherSerImp;
+	//Beginning of mapping
 	
-	@PostMapping("/teacher")
-	public ResponseEntity<Teacher> insertData(@RequestBody @Valid TeacherDTO teacherDto)
+	@PostMapping("/teachers")
+	public ResponseEntity<Teacher> insertDataRecords(@RequestBody @Valid TeacherDTO teacherDto)
 	{
 		try
 		{
-			Teacher teach= teacherSerImp.insertData(teacherDto);
+			Teacher teach= teacherSerImp.insertDataRecord(teacherDto);
 			if(teach!=null)
 			{
-				return new ResponseEntity<>(teacherSerImp.insertData(teacherDto),HttpStatus.CREATED);
+				return new ResponseEntity<>(teacherSerImp.insertDataRecord(teacherDto),HttpStatus.CREATED);
 			}
 		}
 			catch(Exception e)
 			{
-				throw new StudentNotFoundException("Student data not inserted ! please enter the valid input");
+				throw new TeacherNotFoundException("Student data not inserted ! please enter the valid input");
 			}
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
@@ -58,9 +58,9 @@ public class TeacherController
 		}
 		catch(Exception e)
 		{
-			throw new NoSuchElementException("Teacher data not Found ! please enter the valid input");
+			throw new TeacherNotFoundException("Teacher data not Found ! please enter the valid input");
 		}
-		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	@DeleteMapping("/teacher/delete/{teacherId}")
@@ -68,7 +68,7 @@ public class TeacherController
 	{
 		try
 		{
-			Teacher teach=null;//=teacherSerImp.deleteTeacherDetails(teacherId);
+			Teacher teach=teacherSerImp.deleteTeacherDetails(teacherId);
 			if(teach == teacherSerImp.teachId)
 			{
 				 teacherSerImp.deleteTeacherDetails(teacherId);
@@ -97,8 +97,49 @@ public class TeacherController
 		{
 			throw new TeacherNotFoundException("Teacher data not Modified ! please enter the valid input");
 		}
-		return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
+	
+	
+	@GetMapping("/teacher/details/all")
+	public ResponseEntity<List<String>> getDetalisAll() 
+	{
+		try
+		{
+			List<Teacher> teach=teacherSerImp.getDetalisAll();
+			if(teach!=null)
+			{
+				teacherSerImp.getDetalisAll();
+				return new ResponseEntity<List<String>>(HttpStatus.FOUND);
+			}
+		}
+		catch(Exception e)
+		{
+			throw new TeacherNotFoundException("Teader details not fount");
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	
+	
+	@DeleteMapping("/teacher/delete/all")
+	ResponseEntity<String> deletedetailsAll()
+	{
+		try
+		{
+			String  teach=teacherSerImp.deletedetailsAll();
+			if(teach!=null)
+			{
+				teacherSerImp.deletedetailsAll();
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+		}
+		catch(Exception e)
+		{
+			throw new TeacherNotFoundException("Teacher details not deleted");
+		}
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
 
 }
