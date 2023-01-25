@@ -21,7 +21,7 @@ public class GlobalException<ResourceNotFoundException>
 {
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	ResponseEntity<Map<String,List<String>>> handelValidatioonError(MethodArgumentNotValidException e)
+	ResponseEntity<Map<String,List<String>>> handelValidationError(MethodArgumentNotValidException e)
 	{
 		List<String> error = e .getBindingResult()
 								.getFieldErrors( ).stream()
@@ -41,7 +41,7 @@ public class GlobalException<ResourceNotFoundException>
 	
 		@ResponseStatus(HttpStatus.NOT_FOUND)
 		@ExceptionHandler(StudentNotFoundException.class)
-		public ResponseEntity<Map<String,List<String>>> handelValidatioonError(StudentNotFoundException ec)
+		public ResponseEntity<Map<String,List<String>>>studentNotFoundError(StudentNotFoundException ec)
 		{
 			List<String> errors =Collections.singletonList(ec.getMessage());
 			return  new ResponseEntity<>(getErrorMap(errors),new HttpHeaders(),HttpStatus.NOT_FOUND);
@@ -51,7 +51,7 @@ public class GlobalException<ResourceNotFoundException>
 	
 		@ResponseStatus(HttpStatus.NOT_FOUND)
 		@ExceptionHandler(TeacherNotFoundException.class)
-		public ResponseEntity<Map<String,List<String>>> handelValidatioonError(TeacherNotFoundException ec)
+		public ResponseEntity<Map<String,List<String>>> teacherNotFoundError(TeacherNotFoundException ec)
 		{
 			List<String> errors = 	Collections.singletonList(ec.getMessage());
 			return  new ResponseEntity<>(getErrorMap(errors),new HttpHeaders(),HttpStatus.NOT_FOUND);

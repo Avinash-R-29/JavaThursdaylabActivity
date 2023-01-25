@@ -27,7 +27,7 @@ public class TeacherController
 	TeacherServiceImp teacherSerImp;
 	//Beginning of mapping
 	
-	@PostMapping("/teachers")
+	@PostMapping("/teacher")
 	public ResponseEntity<Teacher> insertDataRecords(@RequestBody @Valid TeacherDTO teacherDto)
 	{
 		try

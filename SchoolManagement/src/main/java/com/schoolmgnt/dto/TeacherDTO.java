@@ -42,5 +42,5 @@ public class TeacherDTO
 	
 	
 	//Student student;
-	List<Student> student;
+	Student student;
 }

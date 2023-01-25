@@ -36,7 +36,7 @@ import lombok.NoArgsConstructor;
 public class Teacher 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	Integer teacherId;
 	
 	@Column(name="teacher_name")
@@ -52,8 +52,8 @@ public class Teacher
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	//name we can give anything which is a primary key of other table 
-	@JoinColumn(name="student_Id")// 
-	 List<Student> student;
+	//@JoinColumn(name="student_Id")
+	 Student student;
 	
 	
 	
