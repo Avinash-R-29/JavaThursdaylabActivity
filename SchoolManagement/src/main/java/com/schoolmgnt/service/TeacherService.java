@@ -13,7 +13,7 @@ public interface TeacherService
 	
 	List<Teacher> getDetalisAll();
 	
-	Teacher deleteTeacherDetails(int teacherId);
+	String deleteTeacherDetails(int teacherId);
 	
 	Teacher updateTeacherDetails(Teacher teacher,int teacherId);
 	

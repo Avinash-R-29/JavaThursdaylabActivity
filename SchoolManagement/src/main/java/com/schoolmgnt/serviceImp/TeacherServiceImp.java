@@ -48,13 +48,12 @@ public class TeacherServiceImp implements TeacherService
 	
 									//3.Delete the Teacher Details By given ID
 	@Override
-	public Teacher deleteTeacherDetails(int teacherId)
+	public String deleteTeacherDetails(int teacherId)
 	{
 		
 			teacherRepo.deleteById(teacherId);
-			return teachId;
+			return "teacher details deleted sucessfully";
 			
-			//return null;// "Teacher Details deleted sucessfully";
 	
 	}
 									//4.Update the Teacher Details by given ID.

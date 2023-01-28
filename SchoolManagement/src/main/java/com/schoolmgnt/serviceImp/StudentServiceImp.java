@@ -20,7 +20,7 @@ public class StudentServiceImp implements StudentService
 	
 								//Inserting the Student Details in Student Table.
 	@Override
-	public Student insertStudent(@Valid StudentDTO studentDTO) 
+	public Student insertStudent(StudentDTO studentDTO) 
 	{
 		Student student=Student.builder().studentName(studentDTO.getStudentName())
 										 .studentDOB(studentDTO.getStudentDOB())
@@ -75,6 +75,7 @@ public class StudentServiceImp implements StudentService
 		stud.setStudentName (params.getStudentName());
 		stud.setPhoneNumber (params.getPhoneNumber());
 		stud.setStudentDOB  (params.getStudentDOB());
+		stud.setEmail(params.getEmail());
 		stud.setAddress     (params.getAddress());
 		
 		return studentRepo.save(stud);

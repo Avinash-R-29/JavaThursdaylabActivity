@@ -64,14 +64,16 @@ public class TeacherController
 	}
 
 	@DeleteMapping("/teacher/delete/{teacherId}")
-	public ResponseEntity<Teacher> deleteTeacherDetails(@PathVariable("teacherId") int teacherId)
+	public ResponseEntity<String> deleteTeacherDetails(@PathVariable("teacherId") int teacherId)
 	{
 		try
 		{
-			Teacher teach=teacherSerImp.deleteTeacherDetails(teacherId);
-			if(teach == teacherSerImp.teachId)
+			String teach=teacherSerImp.deleteTeacherDetails(teacherId);
+			if(teach != null)
+			//if(teach == teacherSerImp.teachId)
 			{
-				 teacherSerImp.deleteTeacherDetails(teacherId);
+				return new ResponseEntity<String>(teach,HttpStatus.FOUND);
+				//teacherSerImp.deleteTeacherDetails(teacherId);
 			}
 		}
 		catch(Exception e)
@@ -103,22 +105,22 @@ public class TeacherController
 	
 	
 	@GetMapping("/teacher/details/all")
-	public ResponseEntity<List<String>> getDetalisAll() 
+	public ResponseEntity<List<Teacher>> getDetalisAll() 
 	{
 		try
 		{
 			List<Teacher> teach=teacherSerImp.getDetalisAll();
 			if(teach!=null)
 			{
-				teacherSerImp.getDetalisAll();
-				return new ResponseEntity<List<String>>(HttpStatus.FOUND);
+				//List<Teacher> teach=teacherSerImp.getDetalisAll();
+				return new ResponseEntity<List<Teacher>>(teach,HttpStatus.FOUND);
 			}
 		}
 		catch(Exception e)
 		{
-			throw new TeacherNotFoundException("Teader details not fount");
+			throw new TeacherNotFoundException("Teader details not found");
 		}
-		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<List<Teacher>>(HttpStatus.NOT_FOUND);
 	}
 	
 	
@@ -132,14 +134,14 @@ public class TeacherController
 			if(teach!=null)
 			{
 				teacherSerImp.deletedetailsAll();
-				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+				return new ResponseEntity<>(HttpStatus.ACCEPTED);
 			}
 		}
 		catch(Exception e)
 		{
 			throw new TeacherNotFoundException("Teacher details not deleted");
 		}
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 	}
 
 }

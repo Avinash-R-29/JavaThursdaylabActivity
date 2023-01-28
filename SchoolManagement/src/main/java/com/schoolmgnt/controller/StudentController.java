@@ -1,5 +1,6 @@
 package com.schoolmgnt.controller;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import javax.validation.Valid;
@@ -98,6 +99,42 @@ public class StudentController
 
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+
+	@GetMapping("/student/details/all")
+	public ResponseEntity<List<Student>> getDetailsAll()
+	{
+		try
+		{
+		 List<Student> studentList=studentSerImp.getDetailsAll();
+		 if(studentList!=null)
+			return new ResponseEntity<List<Student>>(studentList,HttpStatus.FOUND);
+		}
+		catch(Exception e)
+		{
+			throw new StudentNotFoundException("Student details not found");
+		}
+		return new ResponseEntity<List<Student>>(HttpStatus.NOT_FOUND);	
+	
+	}
+	
+	@DeleteMapping("/student/delete/all")
+	ResponseEntity<String> deleteAll()
+	{
+		try
+		{
+			String  student=studentSerImp.deleteAll();
+			if(student!=null)
+			{
+				studentSerImp.deleteAll();
+				return new ResponseEntity<>(HttpStatus.ACCEPTED);
+			}
+		}
+		catch(Exception e)
+		{
+			throw new StudentNotFoundException("Student details not deleted");
+		}
+			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 	}
 }
 

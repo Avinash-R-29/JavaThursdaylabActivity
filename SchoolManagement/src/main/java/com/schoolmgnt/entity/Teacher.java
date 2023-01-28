@@ -36,7 +36,7 @@ import lombok.NoArgsConstructor;
 public class Teacher 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	Integer teacherId;
 	
 	@Column(name="teacher_name")
